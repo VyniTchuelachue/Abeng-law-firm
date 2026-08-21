@@ -164,11 +164,16 @@ img { max-width: 100%; display: block; }
 .nav-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 0;
+  flex-shrink: 0;
 }
 .nav-toggle span {
   width: 26px; height: 2px;
@@ -437,7 +442,7 @@ img { max-width: 100%; display: block; }
 /* Floating call button */
 .float-call {
   position: fixed;
-  bottom: 28px; left: 28px;
+  bottom: calc(20px + env(safe-area-inset-bottom)); left: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -475,7 +480,7 @@ img { max-width: 100%; display: block; }
 /* Scroll to top */
 .scroll-top {
   position: fixed;
-  bottom: 28px; right: 28px;
+  bottom: calc(20px + env(safe-area-inset-bottom)); right: 20px;
   width: 46px; height: 46px;
   background: var(--gold);
   color: var(--navy-dark);
@@ -505,7 +510,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 760px) {
-  .topbar-inner { justify-content: center; flex-wrap: wrap; gap: 12px 20px; text-align: center; }
+  .topbar-inner { justify-content: center; flex-wrap: wrap; gap: 8px 16px; text-align: center; }
   .nav {
     position: absolute;
     top: 100%; left: 0; right: 0;
@@ -517,7 +522,7 @@ img { max-width: 100%; display: block; }
     overflow: hidden;
     transition: max-height 0.3s ease;
   }
-  .nav.open { max-height: 400px; }
+  .nav.open { max-height: 400px; overflow-y: auto; }
   .nav a { padding: 16px 24px; border-bottom: 1px solid var(--border); }
   .nav a::after { display: none; }
   .nav-actions { display: none; }
@@ -528,5 +533,25 @@ img { max-width: 100%; display: block; }
   .practice-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .hero h1 { font-size: 1.9rem; }
-  .section { padding: 64px 0; }
+  .section { padding: 56px 0; }
+
+  /* Prevent iOS Safari from auto-zooming into form fields on focus */
+  .contact-form input,
+  .contact-form textarea { font-size: 16px; }
+
+  /* Full-width, thumb-friendly tap targets for hero CTAs */
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { text-align: center; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; text-align: left; }
+  .footer-col a, .footer-col p { padding: 4px 0; }
+}
+
+@media (max-width: 480px) {
+  .topbar-item.topbar-email { display: none; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero-sub { font-size: 1rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  /* Skip the heavy photo on small screens to save mobile data; gradient alone keeps text readable */
+  .hero { background: linear-gradient(120deg, var(--navy-dark), var(--navy)); }
 }
