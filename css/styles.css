@@ -552,6 +552,7 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 480px) {
   .logo { font-size: 1.15rem; max-width: 62vw; }
+  .topbar-item.topbar-email { display: none; }
   .hero h1 { font-size: 1.6rem; }
   .hero-sub { font-size: 1rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
