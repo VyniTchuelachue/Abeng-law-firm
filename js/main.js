@@ -41,18 +41,6 @@ contactForm.addEventListener('submit', (e) => {
   window.location.href = mailto;
 });
 
-// Hero background slideshow (crossfade); only runs when slides carry a background-image
-// (mobile viewports intentionally skip loading the slide images, see styles.css)
-const heroSlides = document.querySelectorAll('.hero-slide');
-if (heroSlides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  let heroIndex = 0;
-  setInterval(() => {
-    heroSlides[heroIndex].classList.remove('active');
-    heroIndex = (heroIndex + 1) % heroSlides.length;
-    heroSlides[heroIndex].classList.add('active');
-  }, 5500);
-}
-
 // Scroll-reveal animations
 const revealEls = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
