@@ -17,9 +17,15 @@ mainNav.querySelectorAll('a').forEach(link => {
 // Sticky header shrink-on-scroll + scroll-to-top visibility
 const siteHeader = document.getElementById('siteHeader');
 const scrollTop = document.getElementById('scrollTop');
+const floatCall = document.querySelector('.float-call');
+const heroSection = document.getElementById('home');
 window.addEventListener('scroll', () => {
   siteHeader.classList.toggle('scrolled', window.scrollY > 30);
   scrollTop.classList.toggle('visible', window.scrollY > 400);
+  // Hide the floating call button while the hero (which has its own call CTA
+  // and feature strip) is in view, to avoid overlapping it
+  const heroBottom = heroSection.getBoundingClientRect().bottom;
+  floatCall.classList.toggle('visible', heroBottom < 0);
 });
 
 // Footer year
